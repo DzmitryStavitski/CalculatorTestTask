@@ -9,15 +9,16 @@ namespace CalculatorTestTask
     [TestClass]
     public class UnitTest1
     {
-        [TestMethod]
-        public void AddTwoNumbers()
+        [DataTestMethod]
+        [DataRow(12, 999)]
+        public void AddTwoNumbers(int firstNumber, int secondNumber)
         {
             Calculator calculator = new Calculator();
             Assert.IsTrue(calculator.IsOpen());
 
-            calculator.EnterNumber(12);
+            calculator.EnterNumber(firstNumber);
             calculator.ClickAddButton();
-            calculator.EnterNumber(999);
+            calculator.EnterNumber(secondNumber);
             calculator.ClickEqualsButton();
             calculator.ClickMemoryAddButton();
             calculator.EnterNumber(19);
