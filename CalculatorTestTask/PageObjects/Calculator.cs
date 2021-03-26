@@ -8,7 +8,6 @@ namespace CalculatorTestTask.PageObjects
     {
         Application application = new Application(@"C:\Windows\System32\calc1.exe", "Calculator");
 
-        private string windowName = "Calculator";  
         private int resultTextBoxId = 150;
         private int equalsButtonId = 121;
         private int memoryAddButtonId = 125;
