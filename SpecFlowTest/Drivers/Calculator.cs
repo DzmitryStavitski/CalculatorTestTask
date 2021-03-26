@@ -2,7 +2,7 @@
 using System.Linq;
 using Framework.Application;
 
-namespace CalculatorTestTask.PageObjects
+namespace CalculatorTestTask.Drivers
 {
     class Calculator
     {
@@ -48,7 +48,7 @@ namespace CalculatorTestTask.PageObjects
         {
             string result = number.ToString();
             var list = result.Select(digit => int.Parse(digit.ToString()));
-            
+
             foreach (int digit in list)
             {
                 application.clickButton(digit.ToString());
