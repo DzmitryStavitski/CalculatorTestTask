@@ -2,8 +2,15 @@
 
 @mytag
 Scenario: Add two numbers
-	Given  open the calculator
-	Given the first number is 1000
-	And the second number is 1
-	When the two numbers are added
-	Then the result should be 1001
+	Given open the calculator
+	And enter the number 12
+	And click add button
+	And enter the number 999
+	And click equals button
+	And click memory add button
+	And enter the number 19
+	And click add button
+	And click memory reccall button
+	And click equals button
+	Then result should be 1030
+	And close the calculator
