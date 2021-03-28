@@ -7,7 +7,7 @@ namespace Framework.Application
 {
     public class Application
     {
-        private static ILogger logger =  Logger.Logger.getLogger();
+        private static ILogger logger = LogManager.GetCurrentClassLogger();
         private TestStack.White.Application application;
         private Window applicationWindow;
         private string applicationPath;
@@ -29,7 +29,7 @@ namespace Framework.Application
             logger.Info("Application is running...");
         }
 
-        public void clickButton(string elementText)
+        public void findButtonByTextAndClick(string elementText)
         {
             logger.Debug($"Clicking on Button (with text = {elementText})");
 
@@ -37,27 +37,6 @@ namespace Framework.Application
             if (button != null) button.Click();
 
             logger.Info($"Click On Button was success");
-        }
-
-        public void clickButton(int elementId)
-        {
-            logger.Debug($"Clicking on Button (element ID = {elementId})");
-
-            var button = applicationWindow.Get<Button>(SearchCriteria.ByAutomationId(elementId.ToString()));
-            if (button != null) button.Click();
-
-            logger.Info($"Click On Button was success");
-        }
-
-        public string returnTextFromTheTextBox(int automationId)
-        {
-            logger.Debug($"Returning text from TextBox (element ID = {automationId})");
-
-            return
-                applicationWindow.Get<Label>(SearchCriteria.ByAutomationId(automationId.ToString())).AutomationElement.
-                    GetCurrentPropertyValue(System.Windows.Automation.AutomationElement.NameProperty).ToString();
-
-            logger.Info($"Returning text was success");
         }
 
         public void Close()
@@ -68,5 +47,10 @@ namespace Framework.Application
 
             logger.Info($"Application was closed");
         }
-    }
+
+        public Window getApplicationWindow()
+        {
+            return applicationWindow;
+        }
+     }
 }

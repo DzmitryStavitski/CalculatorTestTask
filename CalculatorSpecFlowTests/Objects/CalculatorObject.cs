@@ -1,4 +1,5 @@
 ﻿using Framework.Application;
+using Framework.Elements;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,40 +12,45 @@ namespace CalculatorSpecFlowTests.Objects
     {
         Application application = new Application(@"C:\Windows\System32\calc1.exe", "Калькулятор");
 
-        private int resultTextBoxId = 150;
-        private int equalsButtonId = 121;
-        private int memoryAddButtonId = 125;
-        private int memoryRecallButtonId = 123;
-        private int addButtonId = 93;
+        private TextBox resultBox;
+        private Button addButton;
+        private Button equalsButton;
+        private Button memoryAddButton;
+        private Button memoryRecallButton;
 
         public CalculatorObject()
         {
+            resultBox = new TextBox(application, 150);
+            addButton = new Button(application, 93);
+            equalsButton = new Button(application, 121);
+            memoryAddButton = new Button(application, 125);
+            memoryRecallButton = new Button(application, 123);
             application.Run();
         }
 
         public string getResult()
         {
-            return application.returnTextFromTheTextBox(resultTextBoxId);
+            return resultBox.returnText();
         }
 
         public void ClickEqualsButton()
         {
-            application.clickButton(equalsButtonId);
+            equalsButton.click();
         }
 
         public void ClickMemoryAddButton()
         {
-            application.clickButton(memoryAddButtonId);
+            memoryAddButton.click();
         }
 
         public void ClickMemoryRecallButton()
         {
-            application.clickButton(memoryRecallButtonId);
+            memoryRecallButton.click();
         }
 
         public void ClickAddButton()
         {
-            application.clickButton(addButtonId);
+            addButton.click();
         }
 
         public void EnterNumber(int number)
@@ -54,7 +60,7 @@ namespace CalculatorSpecFlowTests.Objects
 
             foreach (int digit in list)
             {
-                application.clickButton(digit.ToString());
+                application.findButtonByTextAndClick(digit.ToString());
             }
         }
 

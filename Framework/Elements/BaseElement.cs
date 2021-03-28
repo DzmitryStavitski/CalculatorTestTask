@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,18 @@ using System.Threading.Tasks;
 
 namespace Framework.Elements
 {
-    abstract class BaseElement
+    public abstract class BaseElement
     {
+        protected int elementID;
+        protected static ILogger logger = LogManager.GetCurrentClassLogger();
+        protected Application.Application application;
 
+        public BaseElement(Application.Application application, int elementID)
+        {
+            this.application = application;
+            this.elementID = elementID;
+        }
+
+        public abstract void click();
     }
 }
