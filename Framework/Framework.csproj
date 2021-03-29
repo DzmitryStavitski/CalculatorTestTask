@@ -66,6 +66,7 @@
     <Compile Include="Application\Application.cs" />
     <Compile Include="Elements\BaseElement.cs" />
     <Compile Include="Elements\Button.cs" />
+    <Compile Include="Elements\MenuItem.cs" />
     <Compile Include="Elements\TextBox.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

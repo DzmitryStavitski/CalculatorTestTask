@@ -10,7 +10,7 @@ namespace CalculatorSpecFlowTests.Objects
 {
     class CalculatorObject
     {
-        Application application = new Application(@"C:\Windows\System32\calc1.exe", "Калькулятор");
+        Application application = new Application(@"C:\Windows\System32\calc1.exe", "Calculator");
 
         private TextBox resultBox;
         private Button addButton;
@@ -26,6 +26,11 @@ namespace CalculatorSpecFlowTests.Objects
             memoryAddButton = new Button(application, 125);
             memoryRecallButton = new Button(application, 123);
             application.Run();
+        }
+
+        public void changeView(string view)
+        {
+            application.MenuItemClick("View", view);
         }
 
         public string getResult()
@@ -60,7 +65,7 @@ namespace CalculatorSpecFlowTests.Objects
 
             foreach (int digit in list)
             {
-                application.findButtonByTextAndClick(digit.ToString());
+                application.FindButtonByText(digit.ToString()).click();
             }
         }
 

@@ -2,6 +2,7 @@
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.Finders;
 using TestStack.White.UIItems.WindowItems;
+using System;
 
 namespace Framework.Application
 {
@@ -29,14 +30,27 @@ namespace Framework.Application
             logger.Info("Application is running...");
         }
 
-        public void findButtonByTextAndClick(string elementText)
+        public Elements.Button FindButtonByText(string elementText)
         {
-            logger.Debug($"Clicking on Button (with text = {elementText})");
+            logger.Debug($"Returning button (with text = {elementText})");
 
             var button = applicationWindow.Get<Button>(SearchCriteria.ByText(elementText));
-            if (button != null) button.Click();
+            return new Elements.Button(this, Int32.Parse(button.Id));
+        }
 
-            logger.Info($"Click On Button was success");
+        public Elements.TextBox FindTextBoxByText(string elementText)
+        {
+            logger.Debug($"Returning button (with text = {elementText})");
+
+            var button = applicationWindow.Get<TextBox>(SearchCriteria.ByText(elementText));
+            return new Elements.TextBox(this, Int32.Parse(button.Id));
+        }
+
+        public void MenuItemClick(string menuName, string itemName)
+        {
+            logger.Debug($"Returning menuItem (with path = {menuName} -> {itemName})");
+            var menu = applicationWindow.MenuBar.MenuItem(menuName, itemName);
+            menu.Click();
         }
 
         public void Close()
