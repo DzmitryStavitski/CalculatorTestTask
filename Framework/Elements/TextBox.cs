@@ -12,7 +12,7 @@ namespace Framework.Elements
 {
     public class TextBox : BaseElement
     {
-        public TextBox(Application.Application application, int elementID)
+        public TextBox(Application.Application application, string elementID)
            : base(application, elementID)
         {
 

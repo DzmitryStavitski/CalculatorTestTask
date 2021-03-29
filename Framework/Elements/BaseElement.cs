@@ -9,11 +9,11 @@ namespace Framework.Elements
 {
     public abstract class BaseElement
     {
-        protected int elementID;
+        protected string elementID;
         protected static ILogger logger = LogManager.GetCurrentClassLogger();
         protected Application.Application application;
 
-        public BaseElement(Application.Application application, int elementID)
+        public BaseElement(Application.Application application, string elementID)
         {
             this.application = application;
             this.elementID = elementID;

@@ -11,7 +11,7 @@ namespace Framework.Elements
 {
     public class Button : BaseElement
     {
-       public Button(Application.Application application, int elementID)
+       public Button(Application.Application application, string elementID)
             : base(application, elementID)
         {
             

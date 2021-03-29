@@ -35,7 +35,7 @@ namespace Framework.Application
             logger.Debug($"Returning button (with text = {elementText})");
 
             var button = applicationWindow.Get<Button>(SearchCriteria.ByText(elementText));
-            return new Elements.Button(this, Int32.Parse(button.Id));
+            return new Elements.Button(this, button.Id);
         }
 
         public Elements.TextBox FindTextBoxByText(string elementText)
@@ -43,14 +43,15 @@ namespace Framework.Application
             logger.Debug($"Returning button (with text = {elementText})");
 
             var button = applicationWindow.Get<TextBox>(SearchCriteria.ByText(elementText));
-            return new Elements.TextBox(this, Int32.Parse(button.Id));
+            return new Elements.TextBox(this, button.Id);
         }
 
-        public void MenuItemClick(string menuName, string itemName)
+        public Elements.MenuItem FindMenuItemByPath(params string[] path)
         {
-            logger.Debug($"Returning menuItem (with path = {menuName} -> {itemName})");
-            var menu = applicationWindow.MenuBar.MenuItem(menuName, itemName);
-            menu.Click();
+            logger.Debug($"Returning menuItem (with path = {path})");
+
+            var menu = applicationWindow.MenuBar.MenuItem(path);
+            return new Elements.MenuItem(this, menu.Id, path);
         }
 
         public void Close()

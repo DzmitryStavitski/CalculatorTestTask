@@ -20,17 +20,17 @@ namespace CalculatorSpecFlowTests.Objects
 
         public CalculatorObject()
         {
-            resultBox = new TextBox(application, 150);
-            addButton = new Button(application, 93);
-            equalsButton = new Button(application, 121);
-            memoryAddButton = new Button(application, 125);
-            memoryRecallButton = new Button(application, 123);
+            resultBox = new TextBox(application, "150");
+            addButton = new Button(application, "93");
+            equalsButton = new Button(application, "121");
+            memoryAddButton = new Button(application, "125");
+            memoryRecallButton = new Button(application, "123");
             application.Run();
         }
 
         public void changeView(string view)
         {
-            application.MenuItemClick("View", view);
+            application.FindMenuItemByPath("View", view).click();
         }
 
         public string getResult()

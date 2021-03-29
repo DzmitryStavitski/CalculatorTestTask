@@ -9,14 +9,18 @@ namespace Framework.Elements
 {
     public class MenuItem : BaseElement
     {
-        public MenuItem(Application.Application application, int elementID)
+        private string[] path;
+
+        public MenuItem(Application.Application application, string elementID, params string[] path)
             : base(application, elementID)
         {
-
+            this.path = path;
         }
         public override void click()
         {
-            logger.Debug($"Clicking on Button (element ID = {elementID})");
+            logger.Debug($"Returning menuItem (with path = {path})");
+            var menu = application.getApplicationWindow().MenuBar.MenuItem(path[path.Length -1]);
+            menu.Click();
         }
     }
 }
