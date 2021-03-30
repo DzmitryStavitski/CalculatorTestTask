@@ -364,3 +364,6 @@ FodyWeavers.xsd
 
 # SpecFlow
 .feature.cs
+
+# Nlog
+NLog.config
