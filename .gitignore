@@ -366,4 +366,4 @@ FodyWeavers.xsd
 .feature.cs
 
 # Nlog
-NLog.config
+NLog.xsd
