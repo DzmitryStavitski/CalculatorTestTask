@@ -1,4 +1,4 @@
-﻿using CalculatorSpecFlowTests.Objects;
+﻿using Framework.Application;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,18 +8,18 @@ using TechTalk.SpecFlow;
 namespace CalculatorSpecFlowTests.Hooks
 {
     [Binding]
-    public sealed class Hooks1
+    public sealed class BeforeAndAfterScenario
     {
         [BeforeScenario]
         public void BeforeScenario()
         {
-            CalculatorObject.application.Run();
+            Application.GetApplication().Run();
         }
 
         [AfterScenario]
         public void AfterScenario()
         {
-            CalculatorObject.application.Close();
+            Application.GetApplication().Close();
         }
     }
 }

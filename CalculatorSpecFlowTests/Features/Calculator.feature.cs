@@ -127,9 +127,6 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 5
- testRunner.Given(string.Format("I open the calculator in {0} view", view), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
-#line hidden
 #line 6
  testRunner.When(string.Format("I enter the number {0}", number1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden

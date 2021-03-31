@@ -12,18 +12,10 @@ namespace Framework.Elements
 {
     public class TextBox : BaseElement
     {
-        public TextBox(Application.Application application, string elementID)
-           : base(application, elementID)
+        public TextBox(SearchCriteria criteria)
+           : base(criteria)
         {
 
-        }
-
-        public override void click()
-        {
-            logger.Debug($"Clicking on Button (element ID = {elementID})");
-
-            var button = application.getApplicationWindow().Get<TestStack.White.UIItems.TextBox>(SearchCriteria.ByAutomationId(elementID.ToString()));
-            if (button != null) button.Click();
         }
 
         public string returnText()
@@ -31,7 +23,7 @@ namespace Framework.Elements
             logger.Debug($"Returning text from TextBox (element ID = {elementID})");
 
             return
-                application.getApplicationWindow().Get<Label>(SearchCriteria.ByAutomationId(elementID.ToString())).AutomationElement.
+                application.getApplicationWindow().Get<Label>(criteria).AutomationElement.
                     GetCurrentPropertyValue(System.Windows.Automation.AutomationElement.NameProperty).ToString();
         }
     }

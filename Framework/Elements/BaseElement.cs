@@ -4,21 +4,40 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TestStack.White.UIItems.Finders;
+using TestStack.White.UIItems;
+using System.Threading;
 
 namespace Framework.Elements
 {
-    public abstract class BaseElement
+    public class BaseElement
     {
-        protected string elementID;
+        protected SearchCriteria criteria;
+        protected static Application.Application application = Application.Application.GetApplication();
         protected static ILogger logger = LogManager.GetCurrentClassLogger();
-        protected Application.Application application;
 
-        public BaseElement(Application.Application application, string elementID)
+        public BaseElement(SearchCriteria criteria)
         {
-            this.application = application;
-            this.elementID = elementID;
+            this.criteria = criteria;
         }
 
-        public abstract void click();
+        public virtual void Click()
+        {
+            logger.Debug($"Clicking on Elelement");
+            application.getApplicationWindow().Get<TestStack.White.UIItems.Button>(criteria).Click();
+        }
+
+        public static void ClickOnMenu(params string[] path)
+        {
+            logger.Debug($"Returning menuItem (with path = {path})");
+
+            var menu = application.getApplicationWindow().MenuBar.MenuItem(path);
+            menu.Click();
+        }
+
+        public bool Exists()
+        {
+            return application.getApplicationWindow().Exists(criteria);
+        }
     }
 }

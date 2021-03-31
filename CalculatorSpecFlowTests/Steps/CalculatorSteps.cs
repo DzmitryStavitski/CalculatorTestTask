@@ -1,4 +1,4 @@
-﻿using CalculatorSpecFlowTests.Objects;
+﻿using CalculatorSpecFlowTests.pages;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using TechTalk.SpecFlow;
@@ -8,19 +8,19 @@ namespace CalculatorSpecFlowTests.Steps
     [Binding]
     public class CalculatorSteps
     {
-        private CalculatorObject calculator;
+        public static Calculator calculator = new Calculator();
 
-        [Given("I open the calculator in (.*) view")]
-        public void OpenTheCalculator(string view)
-        {
-            calculator = new CalculatorObject();
-            //calculator.changeView(view);
-        }
+        //[Given("I open the calculator in (.*) view")]
+        //public void OpenTheCalculator(string view)
+        //{
+        //    calculator.
+        //    //calculator.changeView(view);
+        //}
 
         [When(@"I enter the number (.*)")]
-        public void GivenEnterNumber(int p0)
+        public void GivenEnterNumber(int number)
         {
-            calculator.EnterNumber(p0);
+            calculator.EnterNumber(number);
         }
         
         [When(@"I click add button")]
@@ -48,9 +48,9 @@ namespace CalculatorSpecFlowTests.Steps
         }
         
         [Then(@"result should be (.*)")]
-        public void ThenResultShouldBe(int p0)
+        public void ThenResultShouldBe(int number)
         {
-            Assert.AreEqual(p0.ToString(), calculator.getResult());
+            Assert.AreEqual(number.ToString(), calculator.GetResult(), "The result of addition is incorrect. ");
         }
     }
 }

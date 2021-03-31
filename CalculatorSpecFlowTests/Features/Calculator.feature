@@ -14,7 +14,7 @@ Scenario Outline: Add numbers
 	And I click equals button
 	Then result should be <result>
 Examples:
-|    view    | number1 | number2 | number3 | result |
-| Обычный    |    12   |    999  |    19   |  1030  |
-| Инженерный |    12   |    999  |    19   |  1030  |
+| view       | number1 | number2 | number3 | result|
+| Standart   | 12      | 999     | 19      | 1030  |
+| Scientific | 12      | 999     | 19      | 1030  |
  

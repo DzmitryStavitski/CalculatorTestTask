@@ -12,8 +12,8 @@ namespace Framework.Application
         private static ILogger logger = LogManager.GetCurrentClassLogger();
         private static TestStack.White.Application application;
         private static Window applicationWindow;
-        private static string applicationPath = @"C:\Windows\System32\calc1.exe";
-        private static string applicationWindowName = "Калькулятор";
+        private static string applicationPath = $"{Environment.SystemDirectory}/calc1.exe";
+        private static string applicationWindowName = "Calculator";
 
         private Application()
         {}
