@@ -10,12 +10,12 @@ namespace CalculatorSpecFlowTests.Steps
     {
         public static Calculator calculator = new Calculator();
 
-        //[Given("I open the calculator in (.*) view")]
-        //public void OpenTheCalculator(string view)
-        //{
-        //    calculator.
-        //    //calculator.changeView(view);
-        //}
+        [Given("I open the calculator in (.*) view")]
+        public void OpenTheCalculator(string view)
+        {
+            calculator.
+            //calculator.changeView(view);
+        }
 
         [When(@"I enter the number (.*)")]
         public void GivenEnterNumber(int number)

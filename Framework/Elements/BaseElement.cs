@@ -24,7 +24,7 @@ namespace Framework.Elements
         public virtual void Click()
         {
             logger.Debug($"Clicking on Elelement");
-            application.getApplicationWindow().Get<TestStack.White.UIItems.Button>(criteria).Click();
+            application.getApplicationWindow().Get(criteria).Click();
         }
 
         public static void ClickOnMenu(params string[] path)
