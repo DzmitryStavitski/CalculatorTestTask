@@ -8,16 +8,23 @@ namespace Framework.Application
 {
     public class Application
     {
+        private static Application instance;
         private static ILogger logger = LogManager.GetCurrentClassLogger();
-        private TestStack.White.Application application;
-        private Window applicationWindow;
-        private string applicationPath;
-        private string applicationWindowName;
+        private static TestStack.White.Application application;
+        private static Window applicationWindow;
+        private static string applicationPath = @"C:\Windows\System32\calc1.exe";
+        private static string applicationWindowName = "Калькулятор";
 
-        public Application(string applicationPath, string applicationWindowName)
+        private Application()
+        {}
+
+        public static Application GetApplication()
         {
-            this.applicationPath = applicationPath;
-            this.applicationWindowName = applicationWindowName;
+            if(instance == null)
+            {
+                instance = new Application();
+            }
+            return instance;
         }
 
         public void Run()
@@ -30,35 +37,12 @@ namespace Framework.Application
             logger.Info("Application is running...");
         }
 
-        public Elements.Button FindButtonByText(string elementText)
-        {
-            logger.Debug($"Returning button (with text = {elementText})");
-
-            var button = applicationWindow.Get<Button>(SearchCriteria.ByText(elementText));
-            return new Elements.Button(this, button.Id);
-        }
-
-        public Elements.TextBox FindTextBoxByText(string elementText)
-        {
-            logger.Debug($"Returning button (with text = {elementText})");
-
-            var button = applicationWindow.Get<TextBox>(SearchCriteria.ByText(elementText));
-            return new Elements.TextBox(this, button.Id);
-        }
-
-        public Elements.MenuItem FindMenuItemByPath(params string[] path)
-        {
-            logger.Debug($"Returning menuItem (with path = {path})");
-
-            var menu = applicationWindow.MenuBar.MenuItem(path);
-            return new Elements.MenuItem(this, menu.Id, path);
-        }
-
         public void Close()
         {
             logger.Debug($"Closing the application");
 
             application.Close();
+            application.Dispose();
 
             logger.Info($"Application was closed");
         }

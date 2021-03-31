@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace CalculatorSpecFlowTests.Objects
 {
-    class CalculatorObject
+    public class CalculatorObject
     {
-        Application application = new Application(@"C:\Windows\System32\calc1.exe", "Calculator");
+        public static Application application = new Application(@"C:\Windows\System32\calc1.exe", "Калькулятор");
 
         private TextBox resultBox;
         private Button addButton;
@@ -25,12 +25,11 @@ namespace CalculatorSpecFlowTests.Objects
             equalsButton = new Button(application, "121");
             memoryAddButton = new Button(application, "125");
             memoryRecallButton = new Button(application, "123");
-            application.Run();
         }
 
         public void changeView(string view)
         {
-            application.FindMenuItemByPath("View", view).click();
+            application.FindMenuItemByPath(view).click();
         }
 
         public string getResult()

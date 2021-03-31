@@ -10,38 +10,38 @@ namespace CalculatorSpecFlowTests.Steps
     {
         private CalculatorObject calculator;
 
-        [Given("open the calculator in (.*) view")]
+        [Given("I open the calculator in (.*) view")]
         public void OpenTheCalculator(string view)
         {
             calculator = new CalculatorObject();
-            calculator.changeView(view);
+            //calculator.changeView(view);
         }
 
-        [Given(@"enter the number (.*)")]
+        [When(@"I enter the number (.*)")]
         public void GivenEnterNumber(int p0)
         {
             calculator.EnterNumber(p0);
         }
         
-        [Given(@"click add button")]
+        [When(@"I click add button")]
         public void GivenClickAddButton()
         {
             calculator.ClickAddButton();
         }
         
-        [Given(@"click equals button")]
+        [When(@"I click equals button")]
         public void GivenClickEqualsButton()
         {
             calculator.ClickEqualsButton();
         }
         
-        [Given(@"click memory add button")]
+        [When(@"I click memory add button")]
         public void GivenClickMemoryAddButton()
         {
             calculator.ClickMemoryAddButton();
         }
         
-        [Given(@"click memory reccall button")]
+        [When(@"I click memory reccall button")]
         public void GivenClickMemoryReccallButton()
         {
             calculator.ClickMemoryRecallButton();
@@ -51,12 +51,6 @@ namespace CalculatorSpecFlowTests.Steps
         public void ThenResultShouldBe(int p0)
         {
             Assert.AreEqual(p0.ToString(), calculator.getResult());
-        }
-
-        [Then(@"close the calculator")]
-        public void ThenCloseTheCalculator()
-        {
-            calculator.Close();
         }
     }
 }

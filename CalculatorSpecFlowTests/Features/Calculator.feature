@@ -1,21 +1,20 @@
 ﻿Feature: Calculator
 
-@mytag
+@test
 Scenario Outline: Add numbers
-	Given open the calculator in <view> view
-	And enter the number <number1>
-	And click add button
-	And enter the number <number2>
-	And click equals button
-	And click memory add button
-	And enter the number <number3>
-	And click add button
-	And click memory reccall button
-	And click equals button
+	Given I open the calculator in <view> view
+	When I enter the number <number1>
+	And I click add button
+	And I enter the number <number2>
+	And I click equals button
+	And I click memory add button
+	And I enter the number <number3>
+	And I click add button
+	And I click memory reccall button
+	And I click equals button
 	Then result should be <result>
-	And close the calculator
 Examples:
 |    view    | number1 | number2 | number3 | result |
-| Standard   |    12   |    999  |    19   |  1030  |
-| Scientific |    12   |    999  |    19   |  1030  |
+| Обычный    |    12   |    999  |    19   |  1030  |
+| Инженерный |    12   |    999  |    19   |  1030  |
  
