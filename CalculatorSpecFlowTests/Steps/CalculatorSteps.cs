@@ -13,8 +13,7 @@ namespace CalculatorSpecFlowTests.Steps
         [Given("I open the calculator in (.*) view")]
         public void OpenTheCalculator(string view)
         {
-            calculator.
-            //calculator.changeView(view);
+            calculator.ChangeView(view);
         }
 
         [When(@"I enter the number (.*)")]
